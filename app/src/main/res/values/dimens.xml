@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="btn_calculator_height">70dp</dimen>
+    <dimen name="btn_calculator_width">80dp</dimen>
+    <!-- Region Buttons -->
+    <dimen name="btnWidth">300dp</dimen>
+    <dimen name="btnHeight">70dp</dimen>
+    <!-- End region -->
+</resources>

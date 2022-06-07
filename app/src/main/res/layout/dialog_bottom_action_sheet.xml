@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_top_corner"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frequência"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/textColorOnSecondary"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:textAlignment="textEnd"
+        android:hint="0"
+        android:textColorHint="@color/textColorHintOnSecondary"
+        android:textColor="@color/textColorOnSecondary"
+        android:textSize="22sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_corner"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:text="Confirmar"
+        android:textColor="@color/textColorOnSecondary" />
+
+</LinearLayout>

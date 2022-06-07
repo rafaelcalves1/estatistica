@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="12dp"
+    android:background="@drawable/dialog_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dialog_txt_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColorOnPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/dialog_info"/>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_text_valor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:textColor="@color/textColorOnPrimary"
+        android:hint="Valor"
+        android:textSize="16sp"
+        android:inputType="number"
+        android:textColorHint="@color/textColorHintOnPrimary"
+        app:layout_constraintTop_toBottomOf="@id/dialog_txt_info"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dialog_btn_confirm"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Confirmar"
+        android:textAllCaps="false"
+        android:textColor="@color/textColorOnSecondary"
+        android:background="@drawable/btn_background"
+        android:layout_marginBottom="12dp"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

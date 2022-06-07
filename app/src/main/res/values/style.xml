@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonSelectStyle">
+        <item name="android:background">@drawable/btn_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:textColor">@color/textColorOnSecondary</item>
+        <item name="android:layout_margin">12dp</item>
+    </style>
+
+    <style name="ButtonNumbersStyle">
+        <item name="android:background">@drawable/btn_number_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorOnSecondary</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="ButtonNumbersStyleWithoutMargin">
+        <item name="android:background">@drawable/btn_number_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorOnSecondary</item>
+    </style>
+
+    <style name="ButtonCalcularStyle">
+        <item name="android:background">@drawable/btn_number_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorOnSecondary</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="ButtonConfirmarStyle">
+        <item name="android:background">@drawable/btn_confirmar_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorOnSecondary</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+</resources>

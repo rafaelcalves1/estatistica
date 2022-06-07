@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HeaderTableLayout">
+        <attr name="showFac" format="boolean"/>
+        <attr name="showXiXfi" format="boolean"/>
+    </declare-styleable>
+
+</resources>

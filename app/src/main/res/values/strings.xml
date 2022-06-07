@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Estatística</string>
+    <string name="action_settings">Settings</string>
+
+    <!--    Region fragments navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <!--    End Region -->
+
+    <!--    Region Names Buttons -->
+    <string name="btn_dados_discretos_nao_agrupados">Dados Discretos (não agrupados)</string>
+    <string name="btn_dados_discretos_agrupados">Dados Discretos (agrupados)</string>
+    <string name="btn_dados_continuos">Dados Contínuos</string>
+    <!--    End Region -->
+
+    <string name="dialog_info">Informe a quantidade de %s que serão informadas</string>
+    <string name="txt_dialog_loading">Só um minutinho.\nEstamos montandando tudo para você!</string>
+    <string name="title_activity_table">table_activity</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="tabela_media">Media: %s</string>
+    <string name="tabela_mediana">Mediana: %s</string>
+    <string name="tabela_varianca">Variança: %s</string>
+
+</resources>
