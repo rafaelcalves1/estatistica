@@ -13,8 +13,9 @@ import androidx.navigation.fragment.navArgs
 import com.estudos.estatistica.NavGraphTableArgs
 import com.estudos.estatistica.R
 import com.estudos.estatistica.databinding.FragmentTableBinding
+import com.estudos.estatistica.model.ActionHome
 import com.estudos.estatistica.model.Dados
-import com.estudos.estatistica.ui.activity.MainActivity
+import com.estudos.estatistica.ui.home.HomeActivity
 import com.estudos.estatistica.ui.adapter.FullDataAdapter
 import com.estudos.estatistica.ui.viewmodel.TableFragmentViewModel
 import com.estudos.estatistica.util.format
@@ -51,27 +52,28 @@ class TableFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         when(args.calculo.type){
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 binding.tabelaHeader.showXi(false)
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 binding.tabelaHeader.showXi(false)
                 binding.tabelaHeader.showXifi(false)
                 binding.tabelaHeader.showFac(false)
             }
+            else -> {}
         }
         addObservers()
         addListenners()
     }
 
-    private fun configRecycler(list: List<Dados>, type: Int) {
-        binding.tabelaRecycler.adapter = FullDataAdapter(list, type)
+    private fun configRecycler(list: List<Dados>) {
+        binding.tabelaRecycler.adapter = FullDataAdapter(list)
     }
 
     private fun addListenners() {
         binding.toolbarBtnClose.setOnClickListener {
             activity?.run {
-                Intent(this, MainActivity::class.java).apply {
+                Intent(this, HomeActivity::class.java).apply {
                     startActivity(this)
                 }
                 finish()
@@ -88,7 +90,7 @@ class TableFragment : Fragment() {
             binding.mediaGeral.text = getString(R.string.tabela_media,  it.mediaGeral.toFloat().format(2))
             binding.mediana.text = getString(R.string.tabela_mediana, it.mediana.toFloat().format(2))
             binding.varianca.text = getString(R.string.tabela_varianca, it.varianca.toFloat().format(2))
-            configRecycler(it.dados, it.type)
+            configRecycler(it.dados)
         }
 
         viewModel.uri.observe(viewLifecycleOwner){
@@ -100,15 +102,15 @@ class TableFragment : Fragment() {
         }
     }
 
-    private fun setType(type: Int): String{
+    private fun setType(type: ActionHome): String{
        return when (type) {
-            DADOS_CONTINUOS -> {
+           ActionHome.CONTINUOUS_DATA -> {
                 "Classes"
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+           ActionHome.DISCRETE_DATA -> {
                 "Valores"
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+           ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 "Valores"
             }
            else -> {

@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.estudos.estatistica.databinding.FragmentSecondBinding
+import com.estudos.estatistica.model.ActionHome
 import com.estudos.estatistica.model.Classes
 import com.estudos.estatistica.model.Dados
 import com.estudos.estatistica.ui.adapter.DadosAdapter
@@ -22,15 +23,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import kotlin.math.roundToInt
 
-
-const val DADOS_CONTINUOS = 0
-const val DADOS_DISCRETOS_AGRUPADOS = 1
-const val DADOS_DISCRETOS_NAO_AGRUPADOS = 2
 const val FREQUENCIA_DADOS_NAO_AGRUPADOS = 1
-
+/*
 class SecondFragment : Fragment() {
 
-    private val args: SecondFragmentArgs by navArgs()
 
     private val viewModel: SecondFragmentViewModel by viewModel { parametersOf(args.type) }
 
@@ -44,7 +40,6 @@ class SecondFragment : Fragment() {
     private var frequencia: Int? = null
     private var intervalo: Float? = null
     private var limiteInferior: Float? = null
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -80,7 +75,7 @@ class SecondFragment : Fragment() {
 
     private fun setType() {
         when (viewModel.typeOfCalc) {
-            DADOS_CONTINUOS -> {
+            ActionHome.CONTINUOUS_DATA -> {
                 binding.numberInit.text = "Li: "
                 binding.numberInit.visibility = View.VISIBLE
                 val dialog = DialogCustom("classes")
@@ -90,7 +85,7 @@ class SecondFragment : Fragment() {
                     viewModel.qtdValores = it
                 }
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 binding.numberInit.text = "Variavel: "
                 binding.numberInit.visibility = View.VISIBLE
                 val dialog = DialogCustom("valores")
@@ -100,7 +95,7 @@ class SecondFragment : Fragment() {
                     viewModel.qtdValores = it
                 }
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 binding.headerTitle.setTextClasses("Valores")
                 val dialog = DialogCustom("valores")
                 dialog.isCancelable = false
@@ -196,7 +191,7 @@ class SecondFragment : Fragment() {
             }
             val numberFloat = binding.numberResult.text.toString().toFloat()
             when (viewModel.typeOfCalc) {
-                DADOS_CONTINUOS -> {
+                ActionHome.CONTINUOUS_DATA -> {
                     if (contador == 0) {
                         if(limiteInferior == null){
                             limiteInferior = numberFloat
@@ -230,7 +225,7 @@ class SecondFragment : Fragment() {
                         configuraViewInitEFrequencia()
                     }
                 }
-                DADOS_DISCRETOS_AGRUPADOS -> {
+                ActionHome.DISCRETE_DATA -> {
                     if (contador == 0) {
                         limiteInferior = numberFloat
                         binding.numberInit.visibility = View.VISIBLE
@@ -256,7 +251,7 @@ class SecondFragment : Fragment() {
                         zeraNumberResult()
                     }
                 }
-                DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+                ActionHome.UNGROUPED_DISCRETE_DATA -> {
                     viewModel.addDataToList(
                         Dados(
                             numero = numberFloat,
@@ -307,7 +302,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun zeraTextViews() {
-        if(viewModel.typeOfCalc == DADOS_DISCRETOS_AGRUPADOS){
+        if(viewModel.typeOfCalc == ActionHome.DISCRETE_DATA){
             binding.numberInit.text = "Variavel:  "
         }else{
             binding.numberInit.text = "Li: "
@@ -319,3 +314,4 @@ class SecondFragment : Fragment() {
         binding.numberInit.visibility = View.VISIBLE
     }
 }
+*/

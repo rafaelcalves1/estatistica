@@ -21,7 +21,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/Base.Theme.Estatistica" />
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true"
             android:theme="@style/Base.Theme.Estatistica">
             <intent-filter>

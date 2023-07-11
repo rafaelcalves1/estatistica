@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "793420930759",
+    "project_id": "estatistica-ea16c",
+    "storage_bucket": "estatistica-ea16c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793420930759:android:842a9949c96007cab1e8e2",
+        "android_client_info": {
+          "package_name": "com.estudos.estatistica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793420930759-fn45q96im5ocqs0toblvhrj7nq6le2vd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBses1LNwUgZt5hH-AkiMiitf6iAtY1wTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793420930759-fn45q96im5ocqs0toblvhrj7nq6le2vd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

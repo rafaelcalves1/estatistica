@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_margin_xs"
+    android:background="@drawable/btn_action_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="@dimen/dimen_margin_s"
+    android:theme="@style/Base.Theme.Estatistica">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_bar_chart" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name_action"
+        style="@style/TextNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/icon_action"
+        tools:text="Dados Contínuos" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:theme="@style/Base.Theme.Estatistica">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/btns_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_margin_xxs"
+            android:nestedScrollingEnabled="true"
+            tools:itemCount="4"
+            tools:listitem="@layout/actions_home_item" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_exit"
+            style="@style/ButtonAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_margin_s"
+            android:drawableTop="@drawable/ic_exit"
+            android:padding="@dimen/dimen_margin_s"
+            android:text="@string/common_btn_exit" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

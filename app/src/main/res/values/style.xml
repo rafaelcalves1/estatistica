@@ -40,4 +40,21 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+
+    <style name="ButtonAction">
+        <item name="android:background">@drawable/btn_action_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorOnPrimary</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+
+    <style name="TextNormal" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/textColorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

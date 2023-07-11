@@ -10,5 +10,5 @@ data class Calculo(
     val varianca: String,
     val fac: String,
     val dados: List<Dados>,
-    val type: Int
+    val type: ActionHome
 ) : Parcelable

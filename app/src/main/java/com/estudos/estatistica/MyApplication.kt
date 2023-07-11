@@ -1,7 +1,7 @@
 package com.estudos.estatistica
 
 import android.app.Application
-import com.estudos.estatistica.di.AppModule.appModule
+import com.estudos.estatistica.di.AppModule.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,7 +14,7 @@ class MyApplication: Application() {
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(appModule)
+            modules(viewModelModule)
         }
     }
 }

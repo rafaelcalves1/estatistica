@@ -4,22 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.estudos.estatistica.model.ActionHome
 import com.estudos.estatistica.model.Calculo
 import com.estudos.estatistica.model.Dados
-import com.estudos.estatistica.ui.fragment.DADOS_CONTINUOS
-import com.estudos.estatistica.ui.fragment.DADOS_DISCRETOS_AGRUPADOS
-import com.estudos.estatistica.ui.fragment.DADOS_DISCRETOS_NAO_AGRUPADOS
 import com.estudos.estatistica.util.aoQuadrado
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.pow
 
 
-class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
+class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
 
-    val typeOfCalc: Int
+    val typeOfCalc: ActionHome
         get() = typeCacl
 
     var qtdValores: Int = 0
@@ -88,10 +85,10 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
         return float + intervalo
     }
 
-
     fun executaCalculos() {
         _loading.value = true
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
+            _loading.postValue(true)
 
             val fac = calculaFAC()
             val mediaGeral = calculoMedia()
@@ -100,78 +97,82 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
 
             delay(1000)
 
-            _loading.value = false
-            _calculo.value = Calculo(
-                fac = fac,
-                mediaGeral = mediaGeral,
-                mediana = mediana,
-                varianca = varianca,
-                dados = listOfData,
-                type = typeOfCalc
+            _loading.postValue(false)
+            _calculo.postValue(
+                Calculo(
+                    fac = fac,
+                    mediaGeral = mediaGeral,
+                    mediana = mediana,
+                    varianca = varianca,
+                    dados = listOfData,
+                    type = typeOfCalc
+                )
             )
         }
     }
 
-    fun zeraNumero(){
+    fun zeraNumero() {
         _number.value = ""
     }
 
     private fun calculoMediana(): String {
         var mediana = ""
         when (typeOfCalc) {
-            DADOS_CONTINUOS -> {
+            ActionHome.CONTINUOUS_DATA -> {
                 val encontrarNumero = fac / 2
                 val dadoMediana = encontrarMediana(encontrarNumero)
                 mediana =
                     (dadoMediana.classes!!.limiteInferior + (((encontrarNumero) / dadoMediana.frequencia) * dadoMediana.intervalo!!)).toString()
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 val listXi = listXi().sorted()
-                mediana = if(!isPar(listXi)){
+                mediana = if (!isPar(listXi)) {
                     val meio = listXi.size / 2
                     listXi[meio].toString()
-                }else{
+                } else {
                     val numeroUm = listXi[listXi.size / 2]
                     val numeroDois = listXi[(listXi.size / 2) - 1]
-                    ((numeroUm + numeroDois)/2).toString()
+                    ((numeroUm + numeroDois) / 2).toString()
                 }
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 val listXi = listXi()
-                mediana = if(!isPar(listXi)){
+                mediana = if (!isPar(listXi)) {
                     val meio = listXi.size / 2
                     listXi[(meio)].toString()
-                }else{
+                } else {
                     val numeroUm = listXi[listXi.size / 2]
                     val numeroDois = listXi[(listXi.size / 2) - 1]
-                    ((numeroUm + numeroDois)/2).toString()
+                    ((numeroUm + numeroDois) / 2).toString()
                 }
             }
+            else -> throw IllegalArgumentException()
         }
         return mediana
     }
 
     private fun calculoMedia(): String {
         when (typeOfCalc) {
-            DADOS_CONTINUOS -> {
+            ActionHome.CONTINUOUS_DATA -> {
                 val listaXIFi = listXiFi()
                 val sum = listaXIFi.sum()
-                mediaGeral = ( sum / fac)
+                mediaGeral = (sum / fac)
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 var calculoNumeros: Float = 0f
                 listOfData.forEach {
                     calculoNumeros += it.numero!! * it.frequencia
                 }
                 mediaGeral = (calculoNumeros / fac)
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 var calculoNumeros: Float = 0f
                 listOfData.forEach {
                     calculoNumeros += it.numero!!
                 }
                 mediaGeral = (calculoNumeros / listOfData.size)
             }
+            else -> throw IllegalArgumentException()
         }
         return mediaGeral.toString()
     }
@@ -180,7 +181,7 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
     private fun calculoVarianca(): String {
         var varianca = ""
         when (typeOfCalc) {
-            DADOS_CONTINUOS -> {
+            ActionHome.CONTINUOUS_DATA -> {
                 val listaXI = hashMapOf<Int, Float>()
                 listOfData.forEach {
                     val media = (it.classes!!.limiteInferior + it.classes.limiteSuperior) / 2
@@ -195,7 +196,7 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
                 varianca = (somatoria / (fac - 1)).toString()
 
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
 
                 val listaXI = listXi()
                 val media = listaXI.sum() / listaXI.size
@@ -208,7 +209,7 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
                 varianca = (somatoria / (listaXI.size - 1)).toString()
 
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
 
                 val listaXIAndFi = hashMapOf<Float, Int>()
                 listOfData.forEach {
@@ -224,6 +225,7 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
                 varianca = (somatoria / (fac - 1)).toString()
 
             }
+            else -> throw IllegalArgumentException()
         }
         return varianca
     }
@@ -269,7 +271,7 @@ class SecondFragmentViewModel(private val typeCacl: Int) : ViewModel() {
         return listaXI
     }
 
-    private fun isPar(list: List<Float>):Boolean{
-       return list.size % 2 == 0
+    private fun isPar(list: List<Float>): Boolean {
+        return list.size % 2 == 0
     }
 }

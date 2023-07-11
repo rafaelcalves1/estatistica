@@ -5,10 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.estudos.estatistica.databinding.TabelaBinding
+import com.estudos.estatistica.model.ActionHome
 import com.estudos.estatistica.model.Dados
-import com.estudos.estatistica.ui.fragment.DADOS_CONTINUOS
-import com.estudos.estatistica.ui.fragment.DADOS_DISCRETOS_AGRUPADOS
-import com.estudos.estatistica.ui.fragment.DADOS_DISCRETOS_NAO_AGRUPADOS
 import kotlin.math.roundToInt
 
 class DadosAdapter: RecyclerView.Adapter<DadosViewHolder>() {
@@ -57,15 +55,16 @@ class DadosViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(binding.r
 
     private fun setClasses(dados: Dados){
         when(dados.type){
-            DADOS_CONTINUOS -> {
+            ActionHome.CONTINUOUS_DATA -> {
                 classes.text = "${dados.classes!!.limiteInferior} |- ${dados.classes!!.limiteSuperior}"
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 classes.text = dados.numero!!.roundToInt().toString()
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 classes.text = dados.numero!!.roundToInt().toString()
             }
+            else -> {}
         }
     }
 }

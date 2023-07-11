@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.estudos.estatistica.databinding.TabelaBinding
+import com.estudos.estatistica.model.ActionHome
 import com.estudos.estatistica.model.Dados
-import com.estudos.estatistica.ui.fragment.DADOS_CONTINUOS
-import com.estudos.estatistica.ui.fragment.DADOS_DISCRETOS_AGRUPADOS
-import com.estudos.estatistica.ui.fragment.DADOS_DISCRETOS_NAO_AGRUPADOS
 
-class FullDataAdapter(private val list: List<Dados>, private val type: Int): RecyclerView.Adapter<FullDataViewHolder>() {
+class FullDataAdapter(private val list: List<Dados>): RecyclerView.Adapter<FullDataViewHolder>() {
 
     var fac = 0
 
@@ -24,7 +22,7 @@ class FullDataAdapter(private val list: List<Dados>, private val type: Int): Rec
 
     override fun onBindViewHolder(holder: FullDataViewHolder, position: Int) {
             fac += list[position].frequencia
-            holder.bind(list[position], fac, type)
+            holder.bind(list[position], fac)
     }
 
     override fun getItemCount(): Int  = list.size
@@ -39,23 +37,24 @@ class FullDataViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(bindin
     private val fac = binding.fac
     private val xifi = binding.xifi
 
-    fun bind(dados: Dados, fac: Int, type: Int){
+    fun bind(dados: Dados, fac: Int){
         setClasses(dados)
-        when(type){
-            DADOS_CONTINUOS -> {
+        when(dados.type){
+            ActionHome.CONTINUOUS_DATA -> {
                 configureXiAndXiFi(dados)
                 this.fac.text = fac.toString()
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 media.visibility = View.GONE
                 xifi.text = (dados.numero?.times(dados.frequencia)).toString()
                 this.fac.text = fac.toString()
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 media.visibility = View.GONE
                 xifi.visibility = View.GONE
                 this.fac.visibility = View.GONE
             }
+            else -> {}
         }
         frequencia.text = dados.frequencia.toString()
 
@@ -72,15 +71,16 @@ class FullDataViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(bindin
     @SuppressLint("SetTextI18n")
     private fun setClasses(dados: Dados){
         when(dados.type){
-            DADOS_CONTINUOS -> {
+            ActionHome.CONTINUOUS_DATA -> {
                 classes.text = "${dados.classes!!.limiteInferior} |- ${dados.classes.limiteSuperior}"
             }
-            DADOS_DISCRETOS_AGRUPADOS -> {
+            ActionHome.DISCRETE_DATA -> {
                 classes.text = dados.numero.toString()
             }
-            DADOS_DISCRETOS_NAO_AGRUPADOS -> {
+            ActionHome.UNGROUPED_DISCRETE_DATA -> {
                 classes.text = dados.numero.toString()
             }
+            else -> {}
         }
     }
 }

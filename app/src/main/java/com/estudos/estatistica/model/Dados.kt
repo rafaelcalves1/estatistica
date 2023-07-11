@@ -10,5 +10,5 @@ data class Dados(
     val frequencia: Int,
     val intervalo: Float? = null,
     val mediaDado: Float? = null,
-    val type: Int
+    val type: ActionHome
 ) : Parcelable
