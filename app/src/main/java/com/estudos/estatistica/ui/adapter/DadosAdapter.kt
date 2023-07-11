@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.estudos.estatistica.databinding.TabelaBinding
 import com.estudos.estatistica.model.ActionHome
-import com.estudos.estatistica.model.Dados
+import com.estudos.estatistica.model.DataForCalculation
 import kotlin.math.roundToInt
 
 class DadosAdapter: RecyclerView.Adapter<DadosViewHolder>() {
 
-    private val listOfData = mutableListOf<Dados>()
+    private val listOfData = mutableListOf<DataForCalculation>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DadosViewHolder {
         val binding = TabelaBinding.inflate(
@@ -26,8 +26,8 @@ class DadosAdapter: RecyclerView.Adapter<DadosViewHolder>() {
 
     override fun getItemCount(): Int = listOfData.size
 
-    fun setList(dados: Dados){
-        listOfData.add(dados)
+    fun setList(dataForCalculation: DataForCalculation){
+        listOfData.add(dataForCalculation)
         notifyItemInserted(listOfData.lastIndex)
     }
 }
@@ -40,29 +40,29 @@ class DadosViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(binding.r
     private val fac =  binding.fac
     private val xifi =  binding.xifi
 
-    fun bind(dados: Dados){
+    fun bind(dataForCalculation: DataForCalculation){
         fac.visibility = View.GONE
         media.visibility = View.GONE
         xifi.visibility = View.GONE
-        frequencias.text = dados.frequencia.toString()
-        setClasses(dados)
-        setPontoMedio(dados)
+        frequencias.text = dataForCalculation.frequencia.toString()
+        setClasses(dataForCalculation)
+        setPontoMedio(dataForCalculation)
     }
 
-    private fun setPontoMedio(dados: Dados){
-        media.text = dados.mediaDado.toString()
+    private fun setPontoMedio(dataForCalculation: DataForCalculation){
+        media.text = dataForCalculation.mediaDado.toString()
     }
 
-    private fun setClasses(dados: Dados){
-        when(dados.type){
+    private fun setClasses(dataForCalculation: DataForCalculation){
+        when(dataForCalculation.type){
             ActionHome.CONTINUOUS_DATA -> {
-                classes.text = "${dados.classes!!.limiteInferior} |- ${dados.classes!!.limiteSuperior}"
+                classes.text = "${dataForCalculation.classes!!.limiteInferior} |- ${dataForCalculation.classes!!.limiteSuperior}"
             }
             ActionHome.DISCRETE_DATA -> {
-                classes.text = dados.numero!!.roundToInt().toString()
+                classes.text = dataForCalculation.numero!!.roundToInt().toString()
             }
             ActionHome.UNGROUPED_DISCRETE_DATA -> {
-                classes.text = dados.numero!!.roundToInt().toString()
+                classes.text = dataForCalculation.numero!!.roundToInt().toString()
             }
             else -> {}
         }

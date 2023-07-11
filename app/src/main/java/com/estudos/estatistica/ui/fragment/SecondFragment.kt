@@ -1,28 +1,5 @@
 package com.estudos.estatistica.ui.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.estudos.estatistica.databinding.FragmentSecondBinding
-import com.estudos.estatistica.model.ActionHome
-import com.estudos.estatistica.model.Classes
-import com.estudos.estatistica.model.Dados
-import com.estudos.estatistica.ui.adapter.DadosAdapter
-import com.estudos.estatistica.ui.custom_view.DialogCustom
-import com.estudos.estatistica.ui.custom_view.DialogLoading
-import com.estudos.estatistica.ui.viewmodel.SecondFragmentViewModel
-import com.estudos.estatistica.util.isBlankOrEmpty
-import com.estudos.estatistica.util.validateViewToVisibleOrGone
-import com.google.android.material.snackbar.Snackbar
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
-import kotlin.math.roundToInt
-
 const val FREQUENCIA_DADOS_NAO_AGRUPADOS = 1
 /*
 class SecondFragment : Fragment() {

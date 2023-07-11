@@ -1,17 +1,15 @@
 package com.estudos.estatistica.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.estudos.estatistica.R
 import com.estudos.estatistica.databinding.TabelaBinding
-import com.estudos.estatistica.model.ActionHome
-import com.estudos.estatistica.model.Dados
+import com.estudos.estatistica.model.DataForCalculations
 
-class FullDataAdapter(private val list: List<Dados>): RecyclerView.Adapter<FullDataViewHolder>() {
-
-    var fac = 0
+class FullDataAdapter(private val list: List<DataForCalculations>) :
+    RecyclerView.Adapter<FullDataViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FullDataViewHolder {
         val binding = TabelaBinding.inflate(
@@ -21,66 +19,78 @@ class FullDataAdapter(private val list: List<Dados>): RecyclerView.Adapter<FullD
     }
 
     override fun onBindViewHolder(holder: FullDataViewHolder, position: Int) {
-            fac += list[position].frequencia
-            holder.bind(list[position], fac)
+        holder.bind(list[position])
     }
 
-    override fun getItemCount(): Int  = list.size
+    override fun getItemCount(): Int = list.size
 
 }
 
-class FullDataViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(binding.root){
+class FullDataViewHolder(private val binding: TabelaBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    
+    // region Views
+    private val labelVariables
+        get() = binding.classes
+    
+    private val labelFrequency
+        get() = binding.frequencias
+    
+    private val labelAverage
+        get() = binding.media
+    
+    private val labelCumalativeFrequency
+        get() = binding.fac
 
-    private val classes = binding.classes
-    private val frequencia = binding.frequencias
-    private val media = binding.media
-    private val fac = binding.fac
-    private val xifi = binding.xifi
+    private val labelXiFi
+        get() = binding.xifi
+    //endregion
 
-    fun bind(dados: Dados, fac: Int){
-        setClasses(dados)
-        when(dados.type){
-            ActionHome.CONTINUOUS_DATA -> {
-                configureXiAndXiFi(dados)
-                this.fac.text = fac.toString()
+    fun bind(dataForCalculation: DataForCalculations) {
+        when (dataForCalculation) {
+            is DataForCalculations.ContinuousData -> {
+                setupContinousData(dataForCalculation)
             }
-            ActionHome.DISCRETE_DATA -> {
-                media.visibility = View.GONE
-                xifi.text = (dados.numero?.times(dados.frequencia)).toString()
-                this.fac.text = fac.toString()
+            is DataForCalculations.DiscreteData -> {
+                setupDiscreteData(dataForCalculation)
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
-                media.visibility = View.GONE
-                xifi.visibility = View.GONE
-                this.fac.visibility = View.GONE
+            is DataForCalculations.UngroupedDiscreteData -> {
+                setupUngroupedDiscreteData(dataForCalculation)
             }
-            else -> {}
-        }
-        frequencia.text = dados.frequencia.toString()
-
-    }
-
-
-    @SuppressLint("SetTextI18n")
-    private fun configureXiAndXiFi(dados: Dados){
-        val xi = (dados.classes!!.limiteInferior + dados.classes.limiteSuperior)/2
-        media.text = xi.toString()
-        xifi.text = xi.times(dados.frequencia).toString()
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun setClasses(dados: Dados){
-        when(dados.type){
-            ActionHome.CONTINUOUS_DATA -> {
-                classes.text = "${dados.classes!!.limiteInferior} |- ${dados.classes.limiteSuperior}"
-            }
-            ActionHome.DISCRETE_DATA -> {
-                classes.text = dados.numero.toString()
-            }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
-                classes.text = dados.numero.toString()
-            }
-            else -> {}
         }
     }
+    
+    private fun setupUngroupedDiscreteData(data: DataForCalculations.UngroupedDiscreteData) {
+        labelAverage.visibility = View.GONE
+        labelXiFi.visibility = View.GONE
+        labelCumalativeFrequency.visibility = View.GONE
+        labelFrequency.text = data.frequencia.toString()
+        labelVariables.text = data.numero.toString()
+    }
+
+    private fun setupDiscreteData(data: DataForCalculations.DiscreteData) {
+        labelAverage.visibility = View.GONE
+        labelXiFi.text = (data.numero.times(data.frequencia)).toString()
+        labelCumalativeFrequency.text = labelCumalativeFrequency.toString()
+        labelFrequency.text = data.frequencia.toString()
+        labelVariables.text = data.numero.toString()
+    }
+
+    private fun setupContinousData(data: DataForCalculations.ContinuousData) {
+        labelCumalativeFrequency.text = labelCumalativeFrequency.toString()
+        labelFrequency.text = data.frequencia.toString()
+        labelVariables.text = itemView.context.getString(
+            R.string.table_class,
+            data.classes.limiteInferior.toString(),
+            data.classes.limiteSuperior.toString()
+        )
+        configureXiAndXiFi(data)
+    }
+
+    private fun configureXiAndXiFi(data: DataForCalculations.ContinuousData) {
+        val xi = (data.classes.limiteInferior + data.classes.limiteSuperior) / 2
+        labelAverage.text = xi.toString()
+        labelXiFi.text = xi.times(data.frequencia).toString()
+    }
+
 }

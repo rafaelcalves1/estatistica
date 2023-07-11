@@ -4,11 +4,11 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Calculo(
-    val mediaGeral: String,
-    val mediana: String,
-    val varianca: String,
+data class CalculationData(
+    val mediaGeral: Float,
+    val mediana: Float,
+    val varianca: Float,
     val fac: String,
-    val dados: List<Dados>,
+    val dataForCalculation: List<DataForCalculations>,
     val type: ActionHome
 ) : Parcelable

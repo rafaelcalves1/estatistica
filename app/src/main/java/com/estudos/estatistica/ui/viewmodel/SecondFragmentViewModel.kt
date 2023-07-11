@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.estudos.estatistica.model.ActionHome
-import com.estudos.estatistica.model.Calculo
-import com.estudos.estatistica.model.Dados
+import com.estudos.estatistica.model.CalculationData
+import com.estudos.estatistica.model.DataForCalculation
 import com.estudos.estatistica.util.aoQuadrado
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -24,10 +24,10 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
     private val _number = MutableLiveData<String>()
     val number: LiveData<String> = _number
 
-    private val listOfData: ArrayList<Dados> = arrayListOf()
+    private val listOfData: ArrayList<DataForCalculation> = arrayListOf()
 
-    private val _data = MutableLiveData<Dados>()
-    val data: LiveData<Dados> = _data
+    private val _data = MutableLiveData<DataForCalculation>()
+    val data: LiveData<DataForCalculation> = _data
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
@@ -35,8 +35,8 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
     private val _calc = MutableLiveData<Boolean>()
     val calc: LiveData<Boolean> = _calc
 
-    private val _calculo = MutableLiveData<Calculo>()
-    val calculo: LiveData<Calculo> = _calculo
+    private val _calculationData = MutableLiveData<CalculationData>()
+    val calculationData: LiveData<CalculationData> = _calculationData
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -61,23 +61,18 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
         _number.value = newNumber?.dropLast(1)
     }
 
-    fun addDataToList(dados: Dados) {
-        viewModelScope.launch {
+    fun addDataToList(dataForCalculation: DataForCalculation) {
+        viewModelScope.launch(Dispatchers.Default) {
+            val fac = if (listOfData.isEmpty()) 0 else listOfData.sumOf { it.fac }
+            val newDataForCalculation = dataForCalculation.copy(fac = fac)
+            listOfData.add(newDataForCalculation)
+            _data.postValue(newDataForCalculation)
+            _number.postValue("")
             if (listOfData.size + 1 == qtdValores) {
-                _data.value = dados
-                listOfData.add(dados)
-                _number.value = ""
-                _calc.value = true
+                _calc.postValue(true)
                 return@launch
             }
-            if (listOfData.size < qtdValores) {
-                _data.value = dados
-                listOfData.add(dados)
-                _number.value = ""
-                _calc.value = false
-                return@launch
-            }
-
+            _calc.postValue( false)
         }
     }
 
@@ -98,13 +93,13 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
             delay(1000)
 
             _loading.postValue(false)
-            _calculo.postValue(
-                Calculo(
+            _calculationData.postValue(
+                CalculationData(
                     fac = fac,
-                    mediaGeral = mediaGeral,
-                    mediana = mediana,
-                    varianca = varianca,
-                    dados = listOfData,
+                    mediaGeral = mediaGeral.toFloat(),
+                    mediana = mediana.toFloat(),
+                    varianca = varianca.toFloat(),
+                    dataForCalculation = listOfData,
                     type = typeOfCalc
                 )
             )
@@ -146,7 +141,6 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
                     ((numeroUm + numeroDois) / 2).toString()
                 }
             }
-            else -> throw IllegalArgumentException()
         }
         return mediana
     }
@@ -172,7 +166,6 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
                 }
                 mediaGeral = (calculoNumeros / listOfData.size)
             }
-            else -> throw IllegalArgumentException()
         }
         return mediaGeral.toString()
     }
@@ -225,7 +218,6 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
                 varianca = (somatoria / (fac - 1)).toString()
 
             }
-            else -> throw IllegalArgumentException()
         }
         return varianca
     }
@@ -237,8 +229,8 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
         return fac.toString()
     }
 
-    private fun encontrarMediana(float: Float): Dados {
-        var dados: Dados? = null
+    private fun encontrarMediana(float: Float): DataForCalculation {
+        var dataForCalculation: DataForCalculation? = null
         var contadorUm = 0
         var contadorDois = 0
         val intege = float.toInt()
@@ -246,12 +238,12 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
         listOfData.forEach {
             contadorUm += it.frequencia
             if ((contadorDois..contadorUm).contains(intege) && !passou) {
-                dados = it
+                dataForCalculation = it
                 passou = true
             }
             contadorDois = contadorUm
         }
-        return dados!!
+        return dataForCalculation!!
     }
 
     private fun listXiFi(): ArrayList<Float> {

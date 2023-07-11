@@ -14,10 +14,10 @@ import com.estudos.estatistica.NavGraphTableArgs
 import com.estudos.estatistica.R
 import com.estudos.estatistica.databinding.FragmentTableBinding
 import com.estudos.estatistica.model.ActionHome
-import com.estudos.estatistica.model.Dados
+import com.estudos.estatistica.model.DataForCalculation
 import com.estudos.estatistica.ui.home.HomeActivity
 import com.estudos.estatistica.ui.adapter.FullDataAdapter
-import com.estudos.estatistica.ui.viewmodel.TableFragmentViewModel
+import com.estudos.estatistica.ui.viewmodel.TableViewModel
 import com.estudos.estatistica.util.format
 import com.estudos.estatistica.util.getBitmapFromView
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,7 +27,7 @@ class TableFragment : Fragment() {
 
     private val args by navArgs<NavGraphTableArgs>()
 
-    private val viewModel: TableFragmentViewModel by viewModel {
+    private val viewModel: TableViewModel by viewModel {
         parametersOf(args.calculo)
     }
 
@@ -66,7 +66,7 @@ class TableFragment : Fragment() {
         addListenners()
     }
 
-    private fun configRecycler(list: List<Dados>) {
+    private fun configRecycler(list: List<DataForCalculation>) {
         binding.tabelaRecycler.adapter = FullDataAdapter(list)
     }
 
@@ -85,15 +85,15 @@ class TableFragment : Fragment() {
     }
 
     private fun addObservers() {
-        viewModel.modelCalculo.observe(viewLifecycleOwner){
+        viewModel.calculationData.observe(viewLifecycleOwner){
             binding.tabelaHeader.setTextClasses(setType(it.type))
-            binding.mediaGeral.text = getString(R.string.tabela_media,  it.mediaGeral.toFloat().format(2))
-            binding.mediana.text = getString(R.string.tabela_mediana, it.mediana.toFloat().format(2))
-            binding.varianca.text = getString(R.string.tabela_varianca, it.varianca.toFloat().format(2))
-            configRecycler(it.dados)
+            binding.mediaGeral.text = getString(R.string.table_average,  it.mediaGeral.format(2))
+            binding.mediana.text = getString(R.string.table_median, it.mediana.toFloat().format(2))
+            binding.varianca.text = getString(R.string.table_variance, it.varianca.toFloat().format(2))
+            configRecycler(it.dataForCalculation)
         }
 
-        viewModel.uri.observe(viewLifecycleOwner){
+        viewModel.uriPath.observe(viewLifecycleOwner){
             if (it != null){
                 shareImageUri(it)
                 return@observe
