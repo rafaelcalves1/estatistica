@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.estudos.estatistica.databinding.TabelaBinding
-import com.estudos.estatistica.ui.features.home.model.ActionHome
+import com.estudos.estatistica.model.actions.ActionHome
 import com.estudos.estatistica.model.Dados
 import kotlin.math.roundToInt
 

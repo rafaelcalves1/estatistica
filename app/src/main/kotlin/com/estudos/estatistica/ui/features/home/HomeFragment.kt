@@ -5,8 +5,8 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.estudos.estatistica.databinding.FragmentHomeBinding
-import com.estudos.estatistica.ui.features.home.model.Action
-import com.estudos.estatistica.ui.features.home.model.ActionHome
+import com.estudos.estatistica.model.actions.Action
+import com.estudos.estatistica.model.actions.ActionHome
 import com.estudos.estatistica.util.BaseFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

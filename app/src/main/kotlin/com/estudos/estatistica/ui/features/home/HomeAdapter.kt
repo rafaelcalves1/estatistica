@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.estudos.estatistica.databinding.ActionsHomeItemBinding
-import com.estudos.estatistica.ui.features.home.model.Action
+import com.estudos.estatistica.model.actions.Action
 
 class HomeAdapter : ListAdapter<Action, HomeViewHolder>(HomeActionDiffUtil()) {
 

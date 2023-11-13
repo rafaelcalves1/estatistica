@@ -13,7 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.estudos.estatistica.NavGraphTableArgs
 import com.estudos.estatistica.R
 import com.estudos.estatistica.databinding.FragmentTableBinding
-import com.estudos.estatistica.ui.features.home.model.ActionHome
+import com.estudos.estatistica.model.actions.ActionHome
 import com.estudos.estatistica.model.Dados
 import com.estudos.estatistica.ui.features.home.HomeActivity
 import com.estudos.estatistica.ui.adapter.FullDataAdapter

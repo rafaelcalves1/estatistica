@@ -3,8 +3,8 @@ package com.estudos.estatistica.ui.features.home
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import com.estudos.estatistica.R
-import com.estudos.estatistica.ui.features.home.model.ActionHome
-import com.estudos.estatistica.ui.features.home.model.Action
+import com.estudos.estatistica.model.actions.ActionHome
+import com.estudos.estatistica.model.actions.Action
 
 class HomeViewModel(
     resources: Resources

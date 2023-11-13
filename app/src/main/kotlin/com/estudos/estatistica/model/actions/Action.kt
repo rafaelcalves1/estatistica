@@ -1,4 +1,4 @@
-package com.estudos.estatistica.ui.features.home.model
+package com.estudos.estatistica.model.actions
 
 data class Action(
     val name: String,

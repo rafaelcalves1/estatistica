@@ -1,7 +1,7 @@
 package com.estudos.estatistica.model
 
 import android.os.Parcelable
-import com.estudos.estatistica.ui.features.home.model.ActionHome
+import com.estudos.estatistica.model.actions.ActionHome
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

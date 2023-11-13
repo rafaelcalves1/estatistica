@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.estudos.estatistica.ui.features.home.model.ActionHome
+import com.estudos.estatistica.model.actions.ActionHome
 import com.estudos.estatistica.model.Calculo
 import com.estudos.estatistica.model.Dados
 import com.estudos.estatistica.util.aoQuadrado
