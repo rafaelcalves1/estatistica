@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.estudos.estatistica.ui.features.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/to_calculate"
+            app:destination="@id/calculateFragment" />
+        <action
+            android:id="@+id/to_historic"
+            app:destination="@id/historicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculateFragment"
+        android:name="com.estudos.estatistica.ui.features.calculate.CalculateFragment"
+        android:label="CalculateFragment">
+
+        <action
+            android:id="@+id/action_calculateFragment_to_tableResultActivity"
+            app:destination="@id/tableResultActivity" />
+        <argument
+            android:name="calculateType"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/historicFragment"
+        android:name="com.estudos.estatistica.ui.features.historic.HistoricFragment"
+        android:label="HistoricFragment">
+        <action
+            android:id="@+id/action_historicFragment_to_tableResultActivity"
+            app:destination="@id/tableResultActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/tableResultActivity"
+        android:name="com.estudos.estatistica.ui.features.table.TableResultActivity"
+        android:label="TableResultActivity" />
+</navigation>

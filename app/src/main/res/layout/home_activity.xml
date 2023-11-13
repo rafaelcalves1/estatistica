@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:orientation="vertical"
-    tools:theme="@style/Base.Theme.Estatistica">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <fragment
+        android:id="@+id/navhost_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        app:defaultNavHost="true" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/btns_actions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_margin_xxs"
-            android:nestedScrollingEnabled="true"
-            tools:itemCount="4"
-            tools:listitem="@layout/actions_home_item" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_exit"
-            style="@style/ButtonAction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_margin_s"
-            android:drawableTop="@drawable/ic_exit"
-            android:padding="@dimen/dimen_margin_s"
-            android:text="@string/common_btn_exit" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

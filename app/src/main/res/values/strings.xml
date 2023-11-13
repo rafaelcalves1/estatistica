@@ -20,11 +20,11 @@
     <string name="tabela_varianca">Variança: %s</string>
 
     <!-- region Actions -->
-    <string name="ungrouped_discrete_data">Dados Discretos Não Agrupados</string>
+    <string name="ungrouped_discrete_data">Dados Discretos</string>
     <string name="discrete_data">Dados Discretos Agrupados</string>
-    <string name="continuous_data">Dados Contínuos</string>
+    <string name="continuous_data">Dados Continos</string>
 
-    <string name="common_btn_exit">Sair</string>
+    <string name="historic_action">Histórico</string>
     <!-- endregion -->
 
 </resources>
