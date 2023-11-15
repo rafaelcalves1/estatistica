@@ -6,6 +6,7 @@
     android:background="@drawable/bg_gradient_secondary">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_persona"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +24,6 @@
         android:id="@+id/calculateDiscreteLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/dimen_margin_m"
         android:inflatedId="@+id/calculateDiscreteLayout"
         android:layout="@layout/layout_calculate_discrete"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/calculateDiscreteUngroupedLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/dimen_margin_m"
+        android:layout="@layout/layout_calculate_grouped_discrete_data"
         android:inflatedId="@+id/calculateDiscreteUngroupedLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
@@ -42,7 +42,6 @@
         android:id="@+id/calculateContinousLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/dimen_margin_m"
         android:inflatedId="@+id/calculateContinousLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />

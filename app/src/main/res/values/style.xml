@@ -41,6 +41,14 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+    <style name="ButtonActionLess">
+        <item name="android:background">@drawable/btn_action_less_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
     <style name="ButtonConfirm">
         <item name="android:background">@drawable/btn_confirm_background</item>
         <item name="textAllCaps">false</item>
@@ -64,14 +72,42 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="TextNormal.InfoTwo" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <style name="TextNormal.EditText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorOnPrimaryContainer</item>
         <item name="android:textSize">@dimen/text_size_m</item>
     </style>
 
+    <style name="TextNormal.EditText.Calculate" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:background">@drawable/bg_edit_text_second</item>
+        <item name="android:textColorHint">@color/colorSecondary</item>
+        <item name="android:padding">@dimen/dimen_margin_xs</item>
+
+        <item name="android:minHeight">48dp</item>
+    </style>
+
     <style name="Toolbar" parent="Widget.AppCompat.ActionBar.TabBar">
         <item name="android:background">@color/white</item>
         <item name="android:elevation">6dp</item>
     </style>
+
+
+    <!-- region TableView -->
+    <style name="ComponentTableView" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/bg_table_component_view</item>
+    </style>
+    <!-- endregion -->
 </resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_persona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/content_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_second_persona" />
+
+    <com.estudos.estatistica.ui.custom_view.tablewView.TableView
+        android:id="@+id/tableView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/content_layout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_bottom_layout"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tableView">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_bottom_layout"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_margin_m"
+            tools:ignore="ScrollViewSize">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_info_value_quantity"
+                style="@style/TextNormal.InfoTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen_margin_s"
+                android:text="@string/calculate_grouped_discrete_data_info_quantity" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editText_class"
+                style="@style/TextNormal.EditText.Calculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_margin_s"
+                android:hint="@string/calculate_grouped_discrete_data_edtiText_class" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editText_frequency"
+                style="@style/TextNormal.EditText.Calculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="@dimen/dimen_margin_s"
+                android:hint="@string/calculate_grouped_discrete_data_edtiText_frequency" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_calculate"
+                    style="@style/ButtonActionLess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_margin_s"
+                    android:layout_marginBottom="@dimen/dimen_margin_s"
+                    android:layout_weight="1"
+                    android:text="@string/button_calculate" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_add"
+                    style="@style/ButtonAction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen_margin_s"
+                    android:layout_weight="1"
+                    android:text="@string/button_add" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
