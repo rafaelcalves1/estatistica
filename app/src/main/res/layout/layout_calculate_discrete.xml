@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextNormal.Info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_margin_s"
+        android:text="@string/calculate_discrete_info" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_values"
+        style="@style/TextNormal.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edit_text_calculate_discrete"
+        android:gravity="top|start"
+        android:minHeight="@dimen/calculate_discrete_edit_min_height"
+        android:padding="@dimen/dimen_margin_s" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_calculate"
+        style="@style/ButtonAction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/btnMinHeight"
+        android:text="@string/button_calculate" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+

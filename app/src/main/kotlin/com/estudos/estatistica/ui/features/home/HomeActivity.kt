@@ -20,15 +20,13 @@ class HomeActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         binding = HomeActivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        setupActionBarWithNavController(navController)
-    }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navhost_fragment) as NavHostFragment
 
-    override fun onResume() {
-        super.onResume()
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navhost_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
+
+        setContentView(binding.root)
     }
 
     override fun onSupportNavigateUp(): Boolean {

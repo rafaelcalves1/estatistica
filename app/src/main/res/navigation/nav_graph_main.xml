@@ -17,26 +17,29 @@
             android:id="@+id/to_historic"
             app:destination="@id/historicFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/calculateFragment"
         android:name="com.estudos.estatistica.ui.features.calculate.CalculateFragment"
         android:label="CalculateFragment">
 
         <action
-            android:id="@+id/action_calculateFragment_to_tableResultActivity"
+            android:id="@+id/to_tableResult"
             app:destination="@id/tableResultActivity" />
         <argument
             android:name="calculateType"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/historicFragment"
         android:name="com.estudos.estatistica.ui.features.historic.HistoricFragment"
         android:label="HistoricFragment">
         <action
-            android:id="@+id/action_historicFragment_to_tableResultActivity"
+            android:id="@+id/to_tableResult"
             app:destination="@id/tableResultActivity" />
     </fragment>
+
     <activity
         android:id="@+id/tableResultActivity"
         android:name="com.estudos.estatistica.ui.features.table.TableResultActivity"

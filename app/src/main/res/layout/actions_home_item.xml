@@ -11,6 +11,6 @@
     android:elevation="4dp"
     android:focusable="true"
     android:gravity="center"
-    android:minHeight="@dimen/btnHeightHome"
+    android:minHeight="@dimen/btnMinHeight"
     android:padding="@dimen/dimen_margin_s"
     tools:text="Dados Contínuos" />

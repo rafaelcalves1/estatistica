@@ -11,6 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/content_layout"
+            app:srcCompat="@drawable/img_home_person"/>
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/content_layout"
             android:layout_width="match_parent"
@@ -40,12 +46,6 @@
                 tools:listitem="@layout/actions_home_item" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/content_layout"
-            app:srcCompat="@drawable/img_home_person"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

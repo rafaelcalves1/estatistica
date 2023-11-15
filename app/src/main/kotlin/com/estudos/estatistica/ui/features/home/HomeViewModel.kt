@@ -17,11 +17,11 @@ class HomeViewModel(
         ),
         Action(
             name = resources.getString(R.string.discrete_data),
-            action = ActionHome.DISCRETE_DATA
+            action = ActionHome.GROUPED_DISCRETE_DATA
         ),
         Action(
             name = resources.getString(R.string.ungrouped_discrete_data),
-            action = ActionHome.UNGROUPED_DISCRETE_DATA
+            action = ActionHome.DISCRETE_DATA
         ),
         Action(
             name = resources.getString(R.string.historic_action),

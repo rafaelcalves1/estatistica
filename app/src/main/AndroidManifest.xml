@@ -13,17 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Estatistica"
         tools:targetApi="31">
+
         <activity
-            android:name=".ui.activity.TableActivity"
+            android:name=".ui.features.table.TableResultActivity"
             android:exported="false"
             android:label="@string/title_activity_table"
             android:screenOrientation="landscape"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@style/Base.Theme.Estatistica" />
+            android:configChanges="orientation|keyboardHidden" />
+
         <activity
             android:name=".ui.features.home.HomeActivity"
-            android:exported="true"
-            android:theme="@style/Base.Theme.Estatistica">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

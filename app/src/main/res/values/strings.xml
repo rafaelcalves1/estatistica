@@ -27,4 +27,11 @@
     <string name="historic_action">Histórico</string>
     <!-- endregion -->
 
+    <!-- region Feature Calculate -->
+    <string name="calculate_discrete_info">Insira os valores separados por “ , “:</string>
+    <string name="calculate_discrete_title">Dados Discretos</string>
+    <!-- endregion -->
+    <!-- region Commons -->
+    <string name="button_calculate">Calcular</string>
+    <!-- endregion -->
 </resources>

@@ -7,11 +7,15 @@
     <dimen name="space_height">45dp</dimen>
     <!-- endregion -->
 
+    <!-- region Feat Calculate -->
+    <dimen name="calculate_discrete_edit_min_height">189dp</dimen>
+    <!-- endregion -->
+
     <!-- region Buttons -->
     <dimen name="btnWidth">300dp</dimen>
     <dimen name="btnHeight">72dp</dimen>
 
-    <dimen name="btnHeightHome">48dp</dimen>
+    <dimen name="btnMinHeight">48dp</dimen>
     <!-- endregion -->
 
     <!-- region dimens global -->

@@ -61,7 +61,7 @@ class DadosViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(binding.r
             ActionHome.DISCRETE_DATA -> {
                 classes.text = dados.numero!!.roundToInt().toString()
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
                 classes.text = dados.numero!!.roundToInt().toString()
             }
             else -> {}

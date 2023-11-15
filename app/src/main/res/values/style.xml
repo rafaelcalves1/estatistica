@@ -41,6 +41,14 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+    <style name="ButtonConfirm">
+        <item name="android:background">@drawable/btn_confirm_background</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorOnPrimary</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
 
     <style name="TextNormal" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/textColorOnPrimary</item>
@@ -49,4 +57,21 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="TextNormal.Info" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_l</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+
+    <style name="TextNormal.EditText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorOnPrimaryContainer</item>
+        <item name="android:textSize">@dimen/text_size_m</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">6dp</item>
+    </style>
 </resources>

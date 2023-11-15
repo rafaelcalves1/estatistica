@@ -49,7 +49,7 @@ class FullDataViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(bindin
                 xifi.text = (dados.numero?.times(dados.frequencia)).toString()
                 this.fac.text = fac.toString()
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
                 media.visibility = View.GONE
                 xifi.visibility = View.GONE
                 this.fac.visibility = View.GONE
@@ -77,7 +77,7 @@ class FullDataViewHolder(binding: TabelaBinding): RecyclerView.ViewHolder(bindin
             ActionHome.DISCRETE_DATA -> {
                 classes.text = dados.numero.toString()
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
                 classes.text = dados.numero.toString()
             }
             else -> {}

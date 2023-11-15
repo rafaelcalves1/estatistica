@@ -55,7 +55,7 @@ class TableFragment : Fragment() {
             ActionHome.DISCRETE_DATA -> {
                 binding.tabelaHeader.showXi(false)
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
                 binding.tabelaHeader.showXi(false)
                 binding.tabelaHeader.showXifi(false)
                 binding.tabelaHeader.showFac(false)
@@ -110,7 +110,7 @@ class TableFragment : Fragment() {
            ActionHome.DISCRETE_DATA -> {
                 "Valores"
             }
-           ActionHome.UNGROUPED_DISCRETE_DATA -> {
+           ActionHome.GROUPED_DISCRETE_DATA -> {
                 "Valores"
             }
            else -> {

@@ -1,6 +1,7 @@
 package com.estudos.estatistica.di
 
 import com.estudos.estatistica.model.actions.ActionHome
+import com.estudos.estatistica.ui.features.calculate.CalculateViewModel
 import com.estudos.estatistica.ui.features.home.HomeViewModel
 import com.estudos.estatistica.ui.viewmodel.SecondFragmentViewModel
 import com.estudos.estatistica.ui.viewmodel.TableFragmentViewModel
@@ -16,6 +17,9 @@ object AppModule {
         }
         viewModel { TableFragmentViewModel(get()) }
         viewModel { HomeViewModel(androidApplication().resources) }
+        viewModel { (actionHome: String) ->
+            CalculateViewModel(actionHome)
+        }
     }
 
 }

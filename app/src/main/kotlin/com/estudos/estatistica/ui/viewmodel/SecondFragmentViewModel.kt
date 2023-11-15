@@ -124,7 +124,7 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
                 mediana =
                     (dadoMediana.classes!!.limiteInferior + (((encontrarNumero) / dadoMediana.frequencia) * dadoMediana.intervalo!!)).toString()
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
                 val listXi = listXi().sorted()
                 mediana = if (!isPar(listXi)) {
                     val meio = listXi.size / 2
@@ -165,7 +165,7 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
                 }
                 mediaGeral = (calculoNumeros / fac)
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
                 var calculoNumeros: Float = 0f
                 listOfData.forEach {
                     calculoNumeros += it.numero!!
@@ -196,7 +196,7 @@ class SecondFragmentViewModel(private val typeCacl: ActionHome) : ViewModel() {
                 varianca = (somatoria / (fac - 1)).toString()
 
             }
-            ActionHome.UNGROUPED_DISCRETE_DATA -> {
+            ActionHome.GROUPED_DISCRETE_DATA -> {
 
                 val listaXI = listXi()
                 val media = listaXI.sum() / listaXI.size
